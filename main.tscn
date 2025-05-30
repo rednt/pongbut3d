@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcwm6naaqrcfx"]
+[gd_scene load_steps=9 format=3 uid="uid://bcwm6naaqrcfx"]
 
 [ext_resource type="PackedScene" uid="uid://coc1c5hbnqhhc" path="res://Player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bm2j26sei1pf8" path="res://PaddleAI.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dkyjqbqlnnvuo" path="res://ball.tscn" id="3_h2yge"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xowi"]
 size = Vector3(16.383, 1, 11.9005)
@@ -12,6 +13,10 @@ size = Vector3(16.383, 1, 11.9005)
 size = Vector3(1, 4.94788, 11.9066)
 
 [sub_resource type="BoxMesh" id="BoxMesh_noarx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
+friction = 0.0
+bounce = 1.0
 
 [node name="Main" type="Node3D"]
 transform = Transform3D(1.94325, 0, 0, 0, 1.94325, 0, 0, 0, 1.94325, 0, 0, 0)
@@ -35,7 +40,7 @@ transform = Transform3D(0.481796, -0.122291, 0.13316, 0.0194512, 0.411879, 0.307
 transform = Transform3D(-0.461439, 0.149962, -0.171464, 0.0194512, 0.41188, 0.307882, 0.226958, 0.269594, -0.374998, 6.85554, 4.9108, -4.18786)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.514592, 0.000622468, 0.00309553, -0.00314823, 0.0625179, 0.51078, 0.000241776, -0.51079, 0.0625205, 0.31868, 13.7135, 1.66133)
+transform = Transform3D(0.514602, 0, 0, 0, -2.2494e-08, 0.514602, 0, -0.514602, -2.2494e-08, 0, 15, 0)
 keep_aspect = 0
 current = true
 fov = 106.8
@@ -77,7 +82,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.43576, 2.96942, -0.0120239)
 shape = SubResource("BoxShape3D_a202f")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall3"]
-transform = Transform3D(1.02271, 0, 0, 0, 6.54226, 0, -1.16415e-10, 0, 11.807, 8.50148, 2.02867, 0.0414336)
+transform = Transform3D(1.02271, 0.000465645, -9.9428e-06, -7.27913e-05, 6.54042, -0.280023, -8.63743e-07, 0.155161, 11.8037, 8.52023, 2.16941, 0.041418)
 mesh = SubResource("BoxMesh_noarx")
 
 [node name="Wall4" type="StaticBody3D" parent="."]
@@ -93,3 +98,7 @@ mesh = SubResource("BoxMesh_noarx")
 
 [node name="PaddleAI" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(0.634075, -0.000551572, -0.00680415, 0.000561201, 0.542261, -0.00532214, 0.00824764, 0.00550608, 0.523463, 7.42288, -0.372395, -0.0407684)
+
+[node name="Ball" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71069, 0)
+physics_material_override = SubResource("PhysicsMaterial_h2yge")
