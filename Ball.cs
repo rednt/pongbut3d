@@ -3,7 +3,7 @@ using System;
 
 public partial class Ball : RigidBody3D
 {
-    [Export] public float Speed = 10f;
+    [Export] public float Speed = 15f;
 
     public override void _Ready()
     {
@@ -24,7 +24,6 @@ public partial class Ball : RigidBody3D
 
     public override void _IntegrateForces(PhysicsDirectBodyState3D state)
     {
-        // Keep speed consistent
         if (state.LinearVelocity.Length() != Speed)
             state.LinearVelocity = state.LinearVelocity.Normalized() * Speed;
         Vector3 v = state.LinearVelocity;
@@ -39,7 +38,10 @@ public partial class Ball : RigidBody3D
         AngularVelocity = Vector3.Zero;
         Launch();
     }
+
+
 }
+
 
 
 

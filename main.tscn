@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bcwm6naaqrcfx"]
+[gd_scene load_steps=10 format=3 uid="uid://bcwm6naaqrcfx"]
 
+[ext_resource type="Script" uid="uid://c48opw601gwj1" path="res://Main.cs" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://coc1c5hbnqhhc" path="res://Player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bm2j26sei1pf8" path="res://PaddleAI.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dkyjqbqlnnvuo" path="res://ball.tscn" id="3_h2yge"]
@@ -15,11 +16,15 @@ size = Vector3(1, 4.94788, 11.9066)
 [sub_resource type="BoxMesh" id="BoxMesh_noarx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
-friction = 0.0
+friction = 0.11
 bounce = 1.0
 
 [node name="Main" type="Node3D"]
 transform = Transform3D(1.94325, 0, 0, 0, 1.94325, 0, 0, 0, 1.94325, 0, 0, 0)
+script = ExtResource("1_1bvp3")
+BallPath = NodePath("Ball")
+PlayerPaddlePath = NodePath("Paddle")
+AiPaddlePath = NodePath("PaddleAI")
 
 [node name="Paddle" parent="." instance=ExtResource("1_ig7tw")]
 transform = Transform3D(-0.514583, 0.000395904, 0.00424198, 0.00045529, 0.51455, 0.00720656, -0.00423601, 0.00721007, -0.514533, -6.45366, -0.308452, 0.0662931)
@@ -98,7 +103,9 @@ mesh = SubResource("BoxMesh_noarx")
 
 [node name="PaddleAI" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(0.634075, -0.000551572, -0.00680415, 0.000561201, 0.542261, -0.00532214, 0.00824764, 0.00550608, 0.523463, 7.42288, -0.372395, -0.0407684)
+BallPath = NodePath("../Ball")
 
 [node name="Ball" parent="." instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71069, 0)
+mass = 0.001
 physics_material_override = SubResource("PhysicsMaterial_h2yge")
