@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://coc1c5hbnqhhc"]
+
+[ext_resource type="Script" uid="uid://bw7hwtcls0gh3" path="res://Paddle.cs" id="1_xhfnw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kpjcp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpjcp"]
+albedo_color = Color(0.0784314, 0.129412, 0.65098, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kne1u"]
+
+[node name="Paddle" type="CharacterBody3D"]
+script = ExtResource("1_xhfnw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.384575, 0, 0, 0, 3.24414, 0, 0, 0, 6.05509, 0.00975919, 4.10656, -0.0012238)
+mesh = SubResource("BoxMesh_kpjcp")
+surface_material_override/0 = SubResource("StandardMaterial3D_kpjcp")
+metadata/paddlecolor = Color(0.0683881, 0.204036, 0.480305, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.431227, 0, 0, 0, 3.19609, 0, 0, 0, 6.06642, 0, 4.12045, 0)
+shape = SubResource("BoxShape3D_kne1u")

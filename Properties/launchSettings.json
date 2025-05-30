@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "PongBut3D": {
+      "commandName": "Project"
+    },
+    "Gdebugg": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Godot\\Godot4.4.1-mono\\Godot_v4.4.1-stable_mono_win64.exe",
+      "commandLineArgs": "--verbose"
+    }
+  }
+}
