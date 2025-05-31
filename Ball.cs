@@ -3,7 +3,7 @@ using System;
 
 public partial class Ball : RigidBody3D
 {
-    [Export] public float Speed = 15f;
+    [Export] public float Speed = 10f;
 
     public override void _Ready()
     {
